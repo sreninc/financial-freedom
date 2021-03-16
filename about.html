@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <script src="https://unpkg.com/feather-icons"></script>
 
+    <!-- Load emailjs script to send the contact form via email on submission -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                emailjs.init('user_S6JAlKTkHIee3fsq7Jbum');
+            })();
+        </script>
+
     <!-- Load project custom stylesheet -->
     <link rel="stylesheet" href="assets/style/style.css">
 
@@ -70,11 +78,34 @@
     </header> <!-- Ends Header -->
 
     <section> <!-- Starts Main Page Cotent -->
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-12 col-md-6 col-lg-5 order-md-2">
-                    Page Content
-                </div>
+        <div class="container-lg p-5 contact-form">
+            <div class="row justify-content-md-center">
+
+                <form class="col-md-6" id="contact-form">
+                    <div class="form-group pb-2">
+                        <label for="from_name">Your name</label>
+                        <input type="text" class="form-control" id="from_name" placeholder="Jane Doe" required />
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="jane.doe@mail.com" required />
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="contact_type">Contact Type</label>
+                        <select class="form-control" id="contact_type">
+                            <option>Support</option>
+                            <option>Issues</option>
+                            <option>Partnerships</option>
+                            <option>Media Enquiry</option>
+                            <option>General</option>
+                        </select>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="message">Tell us how we can help</label>
+                        <textarea class="form-control" id="message" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="formSubmit">Submit</button>
+                </form>
             </div>
         </div>
     </section> <!-- Ends Main Page Content -->
