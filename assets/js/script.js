@@ -2,12 +2,274 @@
 
 // Setup default Expense Categpories for user input and results
 function generateMapExpenseCategories() {
-
+    const map = new Map();
+    map.set(
+        "Broadband", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FFB5E8"
+        }
+    );
+    map.set(
+        "Rent or Mortgage", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#B28DFF"
+        }
+    );
+    map.set(
+        "Utilities", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#BFFC66"
+        }
+    );
+    map.set(
+        "Phone & Mobile", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FFABAB"
+        }
+    );
+    map.set(
+        "Groceries", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FFD700"
+        }
+    );
+    map.set(
+        "Eating Out", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#6EB5FF"
+        }
+    );
+    map.set(
+        "Household", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#85E3FF"
+        }
+    );
+    map.set(
+        "Car", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FFBEBC"
+        }
+    );
+    map.set(
+        "Insurance", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#97A2FF"
+        }
+    );
+    map.set(
+        "Holidays", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#C4FAF8"
+        }
+    );
+    map.set(
+        "Gifts", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#A79AFF"
+        }
+    );
+    map.set(
+        "Loans", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#F6A6FF"
+        }
+    );
+    map.set(
+        "Credit Cards", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#BFFCC6"
+        }
+    );
+    map.set(
+        "Other", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#E7FFAC"
+        }
+    );
+    return new Map([...map.entries()].sort((a, b) => String(a[0]).localeCompare(b[0])));
 }
 
 // Setup default Income Expense Categories for user input and results
 function generateMapIncomeCategories() {
-
+    const map = new Map();
+    map.set(
+        "Salary", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FF9AA2"
+        }
+    );
+    map.set(
+        "Bonus", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FFB7B2"
+        }
+    );
+    map.set(
+        "Investments", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#FFDAC1"
+        }
+    );
+    map.set(
+        "Business", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#E2F0CB"
+        }
+    );
+    map.set(
+        "Property", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#B5EAD7"
+        }
+    );
+    map.set(
+        "Other", 
+        {
+            totalAmount: 0,
+            totalMonthlyPercentage: 0,
+            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            blogLink: "",
+            actionLink: "",
+            recommendedPercentageOfIncome: 2,
+            showAdvice: false,
+            backgroundColor: "#C7CEEA"
+        }
+    );
+    return new Map([...map.entries()].sort((a, b) => String(a[0]).localeCompare(b[0])));
 }
 
 // Array for the days of the week used in the #add-item form
@@ -130,3 +392,8 @@ function loadResultsPage() {
 function loadContactFormLogic() {
     
 }
+
+// If either income or expense is already present in localStorage use that. Otherwise generate default category maps. 
+const mapExpenseCategories = localStorage.mapExpenseCategories ? new Map(JSON.parse(localStorage.mapExpenseCategories)) : generateMapExpenseCategories();
+const mapIncomeCategories = localStorage.mapIncomeCategories ? new Map(JSON.parse(localStorage.mapIncomeCategories)) : generateMapIncomeCategories();
+var mapIncomeExpensesByDate = localStorage.mapIncomeExpensesByDate ? new Map(JSON.parse(localStorage.mapIncomeExpensesByDate)) : new Map();
