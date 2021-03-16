@@ -75,6 +75,78 @@
         </div>
     </header> <!-- Ends Header -->
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Add Item Modal" aria-hidden="true"> <!-- Starts #add-item Modal -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                <form class="m-auto p-4 rounded" id="add-item">
+                    <input type="hidden" id="itemId"> 
+                    <div class="btn-group-lg mb-3 d-flex justify-content-evenly" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="toggleCategory()" checked>
+                        <label class="btn btn-outline-primary" for="btnradio1">
+                            Expense
+                        </label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="toggleCategory()">
+                        <label class="btn btn-outline-primary" for="btnradio3">
+                            Income
+                        </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="description" placeholder="Description" required>
+                        <label for="floatingInput">
+                            Description
+                        </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="category" aria-label="Floating label select example"></select>
+                        <label for="floatingSelect">
+                            Category
+                        </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="paymentAmount" placeholder="Payment Amount" required>
+                        <label for="floatingInput">
+                            Payment Amount
+                        </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="paymentFrequency" aria-label="Floating label select example" onchange="toggleDate(this.value)">
+                            <option value="Monthly" selected>
+                                Monthly
+                            </option>
+                            <option value="Fortnightly">
+                                Fortnightly
+                            </option>
+                            <option value="Weekly">
+                                Weekly
+                            </option>
+                            <option value="Daily">
+                                Daily
+                            </option>
+                        </select>
+                        <label for="floatingSelect">
+                            Payment Frequency
+                        </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="dueWhen" aria-label="Floating label select example"></select>
+                        <label for="floatingSelect">
+                            Payment Due
+                        </label>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <div class="pe-4"> 
+                        <button type="button" onclick="addOrUpdateItem()" class="btn btn-lg btn-outline-primary" data-bs-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- Ends #add-item Modal -->
+
     <section> <!-- Starts Main Page Cotent -->
         <div style="width:50%; margin:auto;" id="chartContainer">
             <canvas id="canvas"></canvas>
