@@ -283,6 +283,15 @@
     <script src="assets/js/script.js"></script>
     <script>
       feather.replace();
+
+      document.addEventListener(
+          'DOMContentLoaded',
+          function() 
+          {
+            populateAddItemFormSelects();
+          },
+          false
+      );
     </script>
 </body>
 </html>

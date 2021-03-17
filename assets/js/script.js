@@ -1,5 +1,10 @@
 /*jshint esversion: 6 */
 
+// If either income or expense is already present in localStorage use that. Otherwise generate default category maps. 
+const mapExpenseCategories = localStorage.mapExpenseCategories ? new Map(JSON.parse(localStorage.mapExpenseCategories)) : generateMapExpenseCategories();
+const mapIncomeCategories = localStorage.mapIncomeCategories ? new Map(JSON.parse(localStorage.mapIncomeCategories)) : generateMapIncomeCategories();
+var mapIncomeExpensesByDate = localStorage.mapIncomeExpensesByDate ? new Map(JSON.parse(localStorage.mapIncomeExpensesByDate)) : new Map();
+
 // Setup default Expense Categpories for user input and results
 function generateMapExpenseCategories() {
     const map = new Map();
@@ -274,7 +279,13 @@ function generateMapIncomeCategories() {
 
 // Array for the days of the week used in the #add-item form
 const daysOfWeek = [
-
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
 ];
 
 // Array for the dates of the month from 1-31 used in the #add-item form
@@ -285,7 +296,37 @@ for (let i = 1; i <= 31; i++) {
 
 // Populates the #add-item select menues with the appropriate data when the page has loaded
 function populateAddItemFormSelects() {
+    const selectCategory = document.getElementById("category");
+    console.log(mapExpenseCategories);
+    console.log(mapIncomeCategories);
+    for (const value of mapExpenseCategories) {
+        const option = document.createElement("option");
+        option.text = value[0];
+        option.value = value[0];
+        selectCategory.add(option);
+    }
+    for (const value of mapIncomeCategories) {
+        const option = document.createElement("option");
+        option.text = value[0];
+        option.value = value[0];
+        option.classList.add("d-none");
+        selectCategory.add(option);
+    }
 
+    const selectDueWhen = document.getElementById("dueWhen");
+    for(const element in datesOfMonth) {
+        const option = document.createElement("option");
+        option.text = datesOfMonth[element];
+        option.classList.add("date");
+        selectDueWhen.add(option);
+    }
+    for(const element in daysOfWeek) {
+        const option = document.createElement("option");
+        option.text = datesOfMonth[element];
+        option.classList.add("week");
+        option.classList.add("d-none");
+        selectDueWhen.add(option);
+    }
 }
 
 // Generate a bar chart comparing monthly income and expenditure inputted by the user
@@ -392,8 +433,3 @@ function loadResultsPage() {
 function loadContactFormLogic() {
     
 }
-
-// If either income or expense is already present in localStorage use that. Otherwise generate default category maps. 
-const mapExpenseCategories = localStorage.mapExpenseCategories ? new Map(JSON.parse(localStorage.mapExpenseCategories)) : generateMapExpenseCategories();
-const mapIncomeCategories = localStorage.mapIncomeCategories ? new Map(JSON.parse(localStorage.mapIncomeCategories)) : generateMapIncomeCategories();
-var mapIncomeExpensesByDate = localStorage.mapIncomeExpensesByDate ? new Map(JSON.parse(localStorage.mapIncomeExpensesByDate)) : new Map();
