@@ -297,8 +297,6 @@ for (let i = 1; i <= 31; i++) {
 // Populates the #add-item select menues with the appropriate data when the page has loaded
 function populateAddItemFormSelects() {
     const selectCategory = document.getElementById("category");
-    console.log(mapExpenseCategories);
-    console.log(mapIncomeCategories);
     for (const value of mapExpenseCategories) {
         const option = document.createElement("option");
         option.text = value[0];
@@ -322,10 +320,69 @@ function populateAddItemFormSelects() {
     }
     for(const element in daysOfWeek) {
         const option = document.createElement("option");
-        option.text = datesOfMonth[element];
+        option.text = daysOfWeek[element];
         option.classList.add("week");
         option.classList.add("d-none");
         selectDueWhen.add(option);
+    }
+}
+
+// When the #add-item form toggle for income/expenses is clicked change options
+function toggleCategory(type) {
+    const categories = document.getElementById("category").options;
+    let select = true; 
+
+    for (let i = 0; i < categories.length; i++) {
+        const element = categories[i];
+        const display = element.classList.contains("d-none");
+        if (display) {
+            element.classList.remove("d-none");
+
+            if (select) {
+                element.selected = true;
+                select = false;
+            }
+        } else {
+            element.classList.add("d-none");
+        }
+    }
+}
+
+// When the #add-item form select menu for payment frequency is changed update payment due select options
+function toggleDate(type) {
+    const date = document.getElementsByClassName("date");
+    const week = document.getElementsByClassName("week");
+    const selectMenu = document.getElementById("dueWhen");
+
+    let select = true;
+
+    if (type === "Monthly" || type === "Fortnightly") {
+        for (let i = 0; i < date.length; i++) {
+            date[i].classList.remove("d-none");
+
+            if (select) {
+                date[i].selected = true;
+                select = false;
+            }
+        }
+
+        for (let i = 0; i < week.length; i++) {
+            week[i].classList.add("d-none");
+        }
+
+    } else {
+        for (let i = 0; i < week.length; i++) {
+            week[i].classList.remove("d-none");
+
+            if (select) {
+                week[i].selected = true;
+                select = false;
+            }
+        }
+
+        for (let i = 0; i < date.length; i++) {
+            date[i].classList.add("d-none");
+        }
     }
 }
 
@@ -391,16 +448,6 @@ function resetMapKeys(map) {
 
 // Updates the category maps by clearing them and rechecking all values and show advice against the entry maps
 function updateCategoryMaps(entryMap, categoryMap) {
-
-}
-
-// When the #add-item form toggle for income/expenses is clicked change options
-function toggleCategory() {
-
-}
-
-// When the #add-item form select menu for payment frequency is changed update payment due select options
-function toggleDate(type) {
 
 }
 
