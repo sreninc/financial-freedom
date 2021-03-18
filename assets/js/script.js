@@ -441,6 +441,7 @@ function addOrUpdateItem() {
         localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
     }
 
+    calculateMonthlyPercentage();
     form.reset();
     form.itemId.value = "";
 }
@@ -475,7 +476,22 @@ function calculateMonthly(frequency, value) {
 
 // Calaculates the items value compared to the total monthly income
 function calculateMonthlyPercentage() {
+    let total = 0;
 
+    for (const value of mapIncome.values()) {
+        total += parseInt(value.monthlyAmount);
+    }
+
+    for (const value of mapIncome.values()) {
+        value.percentageMonthlyIncome = Math.round((value.monthlyAmount / total) * 100);
+    }
+
+    for (const value of mapExpenses.values()) {
+        value.percentageMonthlyIncome = Math.round((value.monthlyAmount / total) * 100);
+    }
+
+    populateTableData("income", mapIncome);
+    populateTableData("expenses", mapExpenses);
 }
 
 // Removes item from mapIncome or mapExpenses and updates localStorage for the item
