@@ -407,8 +407,67 @@ function removeData(chart) {
 }
 
 // Populates the appropriate table with the data from income or expenses map object
-function populateTableData(table, data) {
-
+function populateTableData(table, map) {
+    let tableBody = document.getElementById(table).getElementsByTagName('tbody')[0];
+    tableBody.remove();
+    tableBody = document.createElement('tbody');
+    document.getElementById(table).appendChild(tableBody);
+    if(map.size === 0) {
+        const row = tableBody.insertRow(-1);
+        row.insertAdjacentHTML(
+            'beforeend',
+            `
+                <td colspan="8" class="text-center">
+                    <p>
+                        Add Your First Item
+                    </p>
+                    <p class="mb-7 mb-md-9 aos-init aos-animate" data-aos="fade-up" data-aos-delay="150">
+                        <a class="btn btn-primary shadow lift" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Add New Item <i data-feather="arrow-right"></i>
+                        </a>
+                    </p>
+                </td>
+            `
+        );
+    } else {
+        for (const elem of map.entries()) {
+            const row = tableBody.insertRow(-1);
+            row.insertAdjacentHTML(
+                'beforeend',
+                `
+                    <td>
+                        ${elem[1].description}
+                    </td>
+                    <td>
+                        ${elem[1].category}
+                    </td>
+                    <td>
+                        ${elem[1].amount}
+                    </td>
+                    <td>
+                        ${elem[1].frequency}
+                    </td>
+                    <td>
+                        €${Math.round(elem[1].monthlyAmount)}
+                    </td>
+                    <td>
+                        ${elem[1].percentageMonthlyIncome}%
+                    </td>
+                    <td>
+                        <a onclick="editItem('${table}', ${elem[0]})" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i data-feather="edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a onclick="removeItem('${table}', ${elem[0]})">
+                            <i data-feather="trash-2"></i>
+                        </a>
+                    </td>
+                `
+            );
+        }
+    }
+    feather.replace();
 }
 
 // When the user visits the page check if data already exists in localStorage (returning user) or if no data, or incomplete data exists (new user)
