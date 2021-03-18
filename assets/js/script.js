@@ -452,7 +452,25 @@ function editItem(type, id) {
 
 // Calaculates the monthly value for an income/expense item based on the frequency chosen during input
 function calculateMonthly(frequency, value) {
+    let totalMonthly = 0;
 
+    switch(frequency) {
+        case "Monthly":
+            totalMonthly = value;
+            break;
+        case "Fortnightly":
+            totalMonthly = (value * 2.165).toFixed(2);
+            break;
+        case "Weekly":
+            totalMonthly = (value * 4.3333).toFixed(2);
+            break;
+        case "Daily":
+            totalMonthly = (value * 30.3333).toFixed(2);
+            break;
+        default:
+            totalMonthly = value;
+    }
+    return totalMonthly;
 }
 
 // Calaculates the items value compared to the total monthly income
