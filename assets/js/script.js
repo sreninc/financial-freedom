@@ -418,7 +418,31 @@ function newUserOrExisting() {
 
 // #add-item submit action where the item is added to either mapIncome or mapExpenses
 function addOrUpdateItem() {
+    let form = document.getElementById("add-item");
+    let updatingItem = form.itemId.value ? true : false;
 
+    let item = {
+        description: form.description.value,
+        category: form.category.value,
+        amount: form.paymentAmount.value,
+        frequency: form.paymentFrequency.value,
+        whenPaid: form.dueWhen.value,
+        monthlyAmount: calculateMonthly(form.paymentFrequency.value, form.paymentAmount.value),
+        percentageMonthlyIncome: 0
+    };
+
+    if (form.btnradio1.checked) {
+        let expenseId = updatingItem ? parseInt(form.itemId.value) : mapExpenses.size + 1;
+        mapExpenses.set(expenseId, item);
+        localStorage.setItem("mapExpenses", JSON.stringify(Array.from(mapExpenses.entries())));
+    } else {
+        let incomeId = udpatingItem ? parseInt(form.itemId.value) : mapIncome.size + 1;
+        mapIncome.set(incomeId, item);
+        localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
+    }
+
+    form.reset();
+    form.itemId.value = "";
 }
 
 // Populate the #add-item form with data of an existing item when the user clicks the edit button in one of the tables
