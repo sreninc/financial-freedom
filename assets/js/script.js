@@ -720,7 +720,26 @@ function resetMapKeys(map) {
 
 // Updates the category maps by clearing them and rechecking all values and show advice against the entry maps
 function updateCategoryMaps(entryMap, categoryMap) {
+    for (const value of categoryMap.values()) {
+        value.totalAmount = 0;
+        value.totalMonthlyPercentage = 0;
+    }
 
+    for (const value of entryMap.values()) {
+        categoryMap.set(
+            value.category,
+            {
+                totalAmount: categoryMap.get(value.category).totalAmount += parseInt(value.monthlyAmount),
+                totalMonthlyPercentage: categoryMap.get(value.category).totalMonthlyPercentage += value.percentageMonthlyIncome,
+                actionLink: categoryMap.get(value.category).actionLink,
+                advice: categoryMap.get(value.category).advice,
+                blogLink: categoryMap.get(value.category).blogLink,
+                recommendedPercentageOfIncome: categoryMap.get(value.category).recommendedPercentageOfIncome,
+                showAdvice: categoryMap.get(value.category).showAdvice,
+                backgroundColor: categoryMap.get(value.category).backgroundColor
+            }
+        );
+    }
 }
 
 // Generates a day by day income & expense map used to show the user a line graph of income and expense over a month
@@ -745,7 +764,9 @@ function generateResultsAdvice(map) {
 
 // Updates the category and date maps before loading the results page
 function loadResultsPage() {
-
+    updateCategoryMaps(mapIncome, mapIncomeCategories);
+    updateCategoryMaps(mapExpenses, mapExpenseCategories);
+    console.log("load");
 }
 
 // Logic used to load the contact form and emailjs form handling on the about.html page
