@@ -411,6 +411,7 @@ function addOrUpdateItem() {
         localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
     }
 
+    updateIncomeExpensesBarChart();
     calculateMonthlyPercentage();
     form.reset();
     form.itemId.value = "";
@@ -475,7 +476,7 @@ function populateTableData(table, map) {
                         Add Your First Item
                     </p>
                     <p class="mb-7 mb-md-9 aos-init aos-animate" data-aos="fade-up" data-aos-delay="150">
-                        <a class="btn btn-primary shadow lift" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a class="btn btn-primary shadow lift" data-bs-toggle="modal" data-bs-target="#addItemModal">
                             Add New Item <i data-feather="arrow-right"></i>
                         </a>
                     </p>
