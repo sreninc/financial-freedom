@@ -954,7 +954,9 @@ function loadResultsPage() {
     updateCategoryMaps(mapIncome, mapIncomeCategories);
     updateCategoryMaps(mapExpenses, mapExpenseCategories);
     generateIncomeExpensesByDate(mapIncome, mapExpenses);
-    console.log("load");
+    localStorage.setItem('mapIncomeCategories', JSON.stringify(Array.from(mapIncomeCategories.entries())));
+    localStorage.setItem('mapExpenseCategories', JSON.stringify(Array.from(mapExpenseCategories.entries())));
+    window.open('results.html', '_self');
 }
 
 // Logic used to load the contact form and emailjs form handling on the about.html page
