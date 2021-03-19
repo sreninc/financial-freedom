@@ -525,22 +525,128 @@ function populateTableData(table, map) {
 
 // Generate a bar chart comparing monthly income and expenditure inputted by the user
 function generateIncomeExpensesBarChart(ctxIncomeExpenses) {
-
+    return new Chart(
+        ctxIncomeExpenses,
+        {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: 'Income',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Expenses',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    datalabels: {
+                        color: 'blue',
+                        labels: {
+                            value: {
+                                formatter: function(value) {
+                                    return "€" + value;
+                                }
+                            },
+                            name: {
+                                align: 'top',
+                                font: {size: 16},
+                                formatter: function(value, ctx) {
+                                    if (ctx.dataset.label === "Income") {
+                                        return "Income";
+                                    } else {
+                                        return "Expenses";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        bottom: 5
+                    }
+                },
+                tooltips: {
+                    callbacks: {
+                        title: function() {}
+                    }
+                },
+                legend: {
+                    display: false,
+                    position: 'bottom'
+                },
+                scales: {
+                    yAxes: [{
+                        display: false,
+                        ticks: {
+                            beginAtZero: true,
+                            display: false
+                        }
+                    }],
+                    xAxes: [{
+                        display: false,
+                        tickes: {
+                            display: false
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        }
+    );
 }
 
 // Update the income and expenses bar chart when a user adds, edits or removes an item
 function updateIncomeExpensesBarChart() {
+    removeData(chartIncomeExpenses);
+    removeData(chartIncomeExpenses);
 
+    let totalIncome = 0;
+    for (const value of mapIncome.values()) {
+        totalIncome += parseInt(value.monthlyAmount);
+    }
+    addData(chartIncomeExpenses, totalIncome, 0);
+
+    let totalExpenses = 0;
+    for (const value of mapExpenses.value()) {
+        totalExpenses += parseInt(value.monthlyAmount);
+    }
+    addData(chartIncomeExpenses, totalExpenses, 1);
+
+    if (totalExpenses + totalIncome === 0) {
+        document.getElementById("chartContainer").classList.add("d-none");
+        document.getElementById("newUserInfo").classList.remove("d-none");
+    } else {
+        document.getElementById("chartContainer").classList.remove("d-none");
+        document.getElementById("newUserInfo").classList.add("d-none");
+    }
+
+    if (totalExpensese > 0 && totalIncome > 0) {
+        document.getElementById("getAdviceButton").classList.remove("disabled");
+    } else {
+        document.getElementById("getAdviceButton").classList.add("disabled");
+    }
 }
 
 // Adds data to the income expenses bar chart data array 
 function addData(chartIncomeExpenses, data, order) {
-
+    chartIncomeExpenses.data.datasets[order].data.push(data);
+    chartIncomeExpenses.update();
 }
 
 // Removes data from the income expenses bar chart data array
 function removeData(chart) {
-
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
 }
 
 // When the user visits the page check if data already exists in localStorage (returning user) or if no data, or incomplete data exists (new user)
