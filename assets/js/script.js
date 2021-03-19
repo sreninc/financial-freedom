@@ -386,24 +386,77 @@ function toggleDate(type) {
     }
 }
 
-// Generate a bar chart comparing monthly income and expenditure inputted by the user
-function generateIncomeExpensesBarChart(ctxIncomeExpenses) {
+// #add-item submit action where the item is added to either mapIncome or mapExpenses
+function addOrUpdateItem() {
+    let form = document.getElementById("add-item");
+    let updatingItem = form.itemId.value ? true : false;
 
+    let item = {
+        description: form.description.value,
+        category: form.category.value,
+        amount: form.paymentAmount.value,
+        frequency: form.paymentFrequency.value,
+        whenPaid: form.dueWhen.value,
+        monthlyAmount: calculateMonthly(form.paymentFrequency.value, form.paymentAmount.value),
+        percentageMonthlyIncome: 0
+    };
+
+    if (form.btnradio1.checked) {
+        let expenseId = updatingItem ? parseInt(form.itemId.value) : mapExpenses.size + 1;
+        mapExpenses.set(expenseId, item);
+        localStorage.setItem("mapExpenses", JSON.stringify(Array.from(mapExpenses.entries())));
+    } else {
+        let incomeId = updatingItem ? parseInt(form.itemId.value) : mapIncome.size + 1;
+        mapIncome.set(incomeId, item);
+        localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
+    }
+
+    calculateMonthlyPercentage();
+    form.reset();
+    form.itemId.value = "";
 }
 
-// Update the income and expenses bar chart when a user adds, edits or removes an item
-function updateIncomeExpensesBarChart() {
+// Calaculates the monthly value for an income/expense item based on the frequency chosen during input
+function calculateMonthly(frequency, value) {
+    let totalMonthly = 0;
 
+    switch(frequency) {
+        case "Monthly":
+            totalMonthly = value;
+            break;
+        case "Fortnightly":
+            totalMonthly = (value * 2.165).toFixed(2);
+            break;
+        case "Weekly":
+            totalMonthly = (value * 4.3333).toFixed(2);
+            break;
+        case "Daily":
+            totalMonthly = (value * 30.3333).toFixed(2);
+            break;
+        default:
+            totalMonthly = value;
+    }
+    return totalMonthly;
 }
 
-// Adds data to the income expenses bar chart data array 
-function addData(chartIncomeExpenses, data, order) {
+// Calaculates the items value compared to the total monthly income
+function calculateMonthlyPercentage() {
+    let total = 0;
 
-}
+    for (const value of mapIncome.values()) {
+        total += parseInt(value.monthlyAmount);
+    }
 
-// Removes data from the income expenses bar chart data array
-function removeData(chart) {
+    for (const value of mapIncome.values()) {
+        value.percentageMonthlyIncome = Math.round((value.monthlyAmount / total) * 100);
+    }
 
+    for (const value of mapExpenses.values()) {
+        value.percentageMonthlyIncome = Math.round((value.monthlyAmount / total) * 100);
+    }
+
+    populateTableData("income", mapIncome);
+    populateTableData("expenses", mapExpenses);
 }
 
 // Populates the appropriate table with the data from income or expenses map object
@@ -470,87 +523,34 @@ function populateTableData(table, map) {
     feather.replace();
 }
 
+// Generate a bar chart comparing monthly income and expenditure inputted by the user
+function generateIncomeExpensesBarChart(ctxIncomeExpenses) {
+
+}
+
+// Update the income and expenses bar chart when a user adds, edits or removes an item
+function updateIncomeExpensesBarChart() {
+
+}
+
+// Adds data to the income expenses bar chart data array 
+function addData(chartIncomeExpenses, data, order) {
+
+}
+
+// Removes data from the income expenses bar chart data array
+function removeData(chart) {
+
+}
+
 // When the user visits the page check if data already exists in localStorage (returning user) or if no data, or incomplete data exists (new user)
 function newUserOrExisting() {
 
 }
 
-// #add-item submit action where the item is added to either mapIncome or mapExpenses
-function addOrUpdateItem() {
-    let form = document.getElementById("add-item");
-    let updatingItem = form.itemId.value ? true : false;
-
-    let item = {
-        description: form.description.value,
-        category: form.category.value,
-        amount: form.paymentAmount.value,
-        frequency: form.paymentFrequency.value,
-        whenPaid: form.dueWhen.value,
-        monthlyAmount: calculateMonthly(form.paymentFrequency.value, form.paymentAmount.value),
-        percentageMonthlyIncome: 0
-    };
-
-    if (form.btnradio1.checked) {
-        let expenseId = updatingItem ? parseInt(form.itemId.value) : mapExpenses.size + 1;
-        mapExpenses.set(expenseId, item);
-        localStorage.setItem("mapExpenses", JSON.stringify(Array.from(mapExpenses.entries())));
-    } else {
-        let incomeId = updatingItem ? parseInt(form.itemId.value) : mapIncome.size + 1;
-        mapIncome.set(incomeId, item);
-        localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
-    }
-
-    calculateMonthlyPercentage();
-    form.reset();
-    form.itemId.value = "";
-}
-
 // Populate the #add-item form with data of an existing item when the user clicks the edit button in one of the tables
 function editItem(type, id) {
 
-}
-
-// Calaculates the monthly value for an income/expense item based on the frequency chosen during input
-function calculateMonthly(frequency, value) {
-    let totalMonthly = 0;
-
-    switch(frequency) {
-        case "Monthly":
-            totalMonthly = value;
-            break;
-        case "Fortnightly":
-            totalMonthly = (value * 2.165).toFixed(2);
-            break;
-        case "Weekly":
-            totalMonthly = (value * 4.3333).toFixed(2);
-            break;
-        case "Daily":
-            totalMonthly = (value * 30.3333).toFixed(2);
-            break;
-        default:
-            totalMonthly = value;
-    }
-    return totalMonthly;
-}
-
-// Calaculates the items value compared to the total monthly income
-function calculateMonthlyPercentage() {
-    let total = 0;
-
-    for (const value of mapIncome.values()) {
-        total += parseInt(value.monthlyAmount);
-    }
-
-    for (const value of mapIncome.values()) {
-        value.percentageMonthlyIncome = Math.round((value.monthlyAmount / total) * 100);
-    }
-
-    for (const value of mapExpenses.values()) {
-        value.percentageMonthlyIncome = Math.round((value.monthlyAmount / total) * 100);
-    }
-
-    populateTableData("income", mapIncome);
-    populateTableData("expenses", mapExpenses);
 }
 
 // Removes item from mapIncome or mapExpenses and updates localStorage for the item
