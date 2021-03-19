@@ -615,7 +615,7 @@ function updateIncomeExpensesBarChart() {
     addData(chartIncomeExpenses, totalIncome, 0);
 
     let totalExpenses = 0;
-    for (const value of mapExpenses.value()) {
+    for (const value of mapExpenses.values()) {
         totalExpenses += parseInt(value.monthlyAmount);
     }
     addData(chartIncomeExpenses, totalExpenses, 1);
@@ -628,7 +628,7 @@ function updateIncomeExpensesBarChart() {
         document.getElementById("newUserInfo").classList.add("d-none");
     }
 
-    if (totalExpensese > 0 && totalIncome > 0) {
+    if (totalExpenses > 0 && totalIncome > 0) {
         document.getElementById("getAdviceButton").classList.remove("disabled");
     } else {
         document.getElementById("getAdviceButton").classList.add("disabled");

@@ -290,12 +290,15 @@
 
       const mapIncome = newUserOrExisting()[0];
       const mapExpenses = newUserOrExisting()[1];
+      const ctxIncomeExpenses = document.getElementById('canvas').getContext('2d');
+      var chartIncomeExpenses = generateIncomeExpensesBarChart(ctxIncomeExpenses);
 
       document.addEventListener(
           'DOMContentLoaded',
           function() 
           {
             populateAddItemFormSelects();
+            updateIncomeExpensesBarChart();
           },
           false
       );
