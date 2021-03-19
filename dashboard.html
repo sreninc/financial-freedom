@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <script src="https://unpkg.com/feather-icons"></script>
 
+    <!-- Load chartjs library for showing results -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
     <!-- Load project custom stylesheet -->
     <link rel="stylesheet" href="assets/style/style.css">
 
@@ -83,7 +87,7 @@
                 <form class="m-auto p-4 rounded" id="add-item">
                     <input type="hidden" id="itemId"> 
                     <div class="btn-group-lg mb-3 d-flex justify-content-evenly" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="expense" id="btnradio1" autocomplete="off" onclick="toggleCategory(this.name)" checked>
+                        <input type="radio" class="btn-check" name="expense" id="btnradio1" autocomplete="off" onclick="toggleCategory(this.name)">
                         <label class="btn btn-outline-primary" for="btnradio1">
                             Expense
                         </label>
