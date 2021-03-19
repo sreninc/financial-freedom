@@ -288,8 +288,8 @@
     <script>
       feather.replace();
 
-      const mapIncome = new Map();
-      const mapExpenses = new Map();
+      const mapIncome = newUserOrExisting()[0];
+      const mapExpenses = newUserOrExisting()[1];
 
       document.addEventListener(
           'DOMContentLoaded',

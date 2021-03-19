@@ -651,7 +651,26 @@ function removeData(chart) {
 
 // When the user visits the page check if data already exists in localStorage (returning user) or if no data, or incomplete data exists (new user)
 function newUserOrExisting() {
+    const incomeDataAvailable = localStorage.mapIncome && Object.keys(JSON.parse(localStorage.mapIncome)).length > 0 ? Object.keys(JSON.parse(localStorage.mapIncome)[0][1]).length : false;
+    const expenseDataAvailable = localStorage.mapExpenses && Object.keys(JSON.parse(localStorage.mapExpenses)).length > 0 ? Object.keys(JSON.parse(localStorage.mapExpenses)[0][1]).length : false;
+    let mapIncome;
+    let mapExpenses;
 
+    if (incomeDataAvailable && incomeDataAvailable === 7) {
+        mapIncome = new Map(JSON.parse(localStorage.mapIncome));
+    } else {
+        mapIncome = new Map();
+    }
+
+    if (expenseDataAvailable && expenseDataAvailable === 7) {
+        mapExpenses = new Map(JSON.parse(localStorage.mapExpenses));
+    } else {
+        mapExpenses = new Map();
+    }
+
+    populateTableData("income", mapIncome);
+    populateTableData("expenses", mapExpenses);
+    return [mapIncome, mapExpenses];
 }
 
 // Populate the #add-item form with data of an existing item when the user clicks the edit button in one of the tables
