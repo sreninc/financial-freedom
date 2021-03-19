@@ -507,7 +507,7 @@ function populateTableData(table, map) {
                         ${elem[1].percentageMonthlyIncome}%
                     </td>
                     <td>
-                        <a onclick="editItem('${table}', ${elem[0]})" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a onclick="editItem('${table}', ${elem[0]})" data-bs-toggle="modal" data-bs-target="#addItemModal">
                             <i data-feather="edit"></i>
                         </a>
                     </td>
@@ -675,17 +675,46 @@ function newUserOrExisting() {
 
 // Populate the #add-item form with data of an existing item when the user clicks the edit button in one of the tables
 function editItem(type, id) {
+    let form = document.getElementById("add-item");
+    let item;
+    if (type === "expenses") {
+        form.btnradio1.checked = true;
+        form.btnradio3.checked = false;
+        item = mapExpenses.get(id);
+    } else {
+        form.btnradio1.checked = false;
+        form.btnradio3.checked = true;
+        item = mapIncome.get(id);
+    }
 
+    form.itemId.value = id;
+    form.description.value = item.description;
+    form.category.value = item.category;
+    form.paymentAmount.value = item.amount;
+    form.paymentFrequency.value = item.frequency;
+    form.dueWhen.value = item.whenPaid;
 }
 
 // Removes item from mapIncome or mapExpenses and updates localStorage for the item
 function removeItem(type, id) {
-
+    type == "income" ? mapIncome.delete(id) : mapExpenses.delete(id);
+    type == "income" ? resetMapKeys(mapIncome) : resetMapKeys(mapExpenses);
+    updateIncomeExpensesBarChart();
+    calculateMonthlyPercentage();
 }
 
 // When an item is removed from mapIncome or mapExpenses update all keys in the map to reset numerical order
 function resetMapKeys(map) {
-
+    let newKey = 1;
+    let newMap = new Map(map);
+    map.clear();
+    for (const entry of newMap) {
+        map.set(
+            newKey,
+            entry[1]
+        );
+        newKey++;
+    }
 }
 
 // Updates the category maps by clearing them and rechecking all values and show advice against the entry maps
