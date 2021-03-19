@@ -744,7 +744,194 @@ function updateCategoryMaps(entryMap, categoryMap) {
 
 // Generates a day by day income & expense map used to show the user a line graph of income and expense over a month
 function generateIncomeExpensesByDate(incomeMap, expensesMap) {
+    let monthlyArray = new Map();
+    for (let i = 0; i <= datesOfMonth.length; i++) {
+        monthlyArray.set(
+            i,
+            {
+                income: 0,
+                expenses: 0
+            }
+        );
+    }
 
+    for (const value of expensesMap.values()) {
+        //Monthly Frequency
+        if (value.frequency === "Monthly") {
+            monthlyArray.set(
+                parseInt(value.whenPaid),
+                {
+                    income: monthlyArray.get(parseInt(value.whenPaid)).income,
+                    expenses: monthlyArray.get(parseInt(value.whenPaid)).expenses + parseInt(value.amount)
+                }
+            );
+        }
+
+        // Fortnightly Income
+        if (value.frequency === "Fortnightly") {
+            let secondFortnight = parseInt(value.whenPaid) + 14;
+            secondFortnight > 31 ? secondFortnight -= 31 : secondFortnight - secondFortnight;
+            monthlyArray.set(
+                parseInt(value.whenPaid),
+                {
+                    income: monthlyArray.get(parseInt(value.whenPaid)).income,
+                    expenses: monthlyArray.get(parseInt(value.whenPaid)).expenses + parseInt(value.amount)
+                }
+            );
+            monthlyArray.set(
+                parseInt(secondFortnight),
+                {
+                    income: monthlyArray.get(parseInt(secondFortnight)).income,
+                    expenses: monthlyArray.get(parseInt(secondFortnight)).expenses + parseInt(value.amount)
+                }
+            );
+        }
+
+        // Weekly Income
+        if (value.frequency === "Weekly") {
+            let weeklyNumber = 0;
+            switch (value.whenPaid) {
+                case "Monday":
+                    weeklyNumber = 1;
+                    break;
+                case "Tuesday":
+                    weeklyNumber = 2;
+                    break;
+                case "Wednesday":
+                    weeklyNumber = 3;
+                    break;
+                case "Thursday":
+                    weeklyNumber = 4;
+                    break;
+                case "Friday":
+                    weeklyNumber = 5;
+                    break;
+                case "Saturday":
+                    weeklyNumber = 6;
+                    break;
+                case "Sunday":
+                    weeklyNumber = 7;
+                    break;
+                default:
+                    weeklyNumber = 1;
+                    break;
+            }
+            for (const [weeklyKey, weeklyValue] of monthlyArray) {
+                if (weeklyKey % 7 === weeklyNumber) {
+                    monthlyArray.set(
+                        parseInt(weeklyKey),
+                        {
+                            income: monthlyArray.get(weeklyKey).income,
+                            expenses: monthlyArray.get(parseInt(weeklyKey)).expenses + parseInt(value.amount)
+                        }
+                    );
+                }
+            }
+        }
+
+        // Daily Income
+        if (value.frequency === "Daily") {
+            for (const [monthlyKey, monthlyValue] of monthlyArray) {
+                monthlyArray.set(
+                    parseInt(monthlyKey),
+                    {
+                        income: monthlyArray.get(monthlyKey).income,
+                        expenses: monthlyArray.get(parseInt(monthlyKey)).expenses + parseInt(value.amount)
+                    }
+                );
+            }
+        }
+    }
+
+    for (const value of incomeMap.values()) {
+        //Monthly Frequency
+        if (value.frequency === "Monthly") {
+            monthlyArray.set(
+                parseInt(value.whenPaid),
+                {
+                    income: monthlyArray.get(parseInt(value.whenPaid)).income + parseInt(value.amount),
+                    expenses: monthlyArray.get(parseInt(value.whenPaid)).expenses
+                }
+            );
+        }
+
+        // Fortnightly Income
+        if (value.frequency === "Fortnightly") {
+            let secondFortnight = parseInt(value.whenPaid) + 14;
+            secondFortnight > 31 ? secondFortnight -= 31 : secondFortnight - secondFortnight;
+            monthlyArray.set(
+                parseInt(value.whenPaid),
+                {
+                    income: monthlyArray.get(parseInt(value.whenPaid)).income + parseInt(value.amount),
+                    expenses: monthlyArray.get(parseInt(value.whenPaid)).expenses
+                }
+            );
+            monthlyArray.set(
+                parseInt(secondFortnight),
+                {
+                    income: monthlyArray.get(parseInt(secondFortnight)).income + parseInt(value.amount),
+                    expenses: monthlyArray.get(parseInt(secondFortnight)).expenses
+                }
+            );
+        }
+
+        // Weekly Income
+        if (value.frequency === "Weekly") {
+            let weeklyNumber = 0;
+            switch (value.whenPaid) {
+                case "Monday":
+                    weeklyNumber = 1;
+                    break;
+                case "Tuesday":
+                    weeklyNumber = 2;
+                    break;
+                case "Wednesday":
+                    weeklyNumber = 3;
+                    break;
+                case "Thursday":
+                    weeklyNumber = 4;
+                    break;
+                case "Friday":
+                    weeklyNumber = 5;
+                    break;
+                case "Saturday":
+                    weeklyNumber = 6;
+                    break;
+                case "Sunday":
+                    weeklyNumber = 7;
+                    break;
+                default:
+                    weeklyNumber = 1;
+                    break;
+            }
+            for (const [weeklyKey, weeklyValue] of monthlyArray) {
+                if (weeklyKey % 7 === weeklyNumber) {
+                    monthlyArray.set(
+                        parseInt(weeklyKey),
+                        {
+                            income: monthlyArray.get(weeklyKey).income + parseInt(value.amount),
+                            expenses: monthlyArray.get(parseInt(weeklyKey)).expenses
+                        }
+                    );
+                }
+            }
+        }
+
+        // Daily Income
+        if (value.frequency === "Daily") {
+            for (const [monthlyKey, monthlyValue] of monthlyArray) {
+                monthlyArray.set(
+                    parseInt(monthlyKey),
+                    {
+                        income: monthlyArray.get(monthlyKey).income + parseInt(value.amount),
+                        expenses: monthlyArray.get(parseInt(monthlyKey)).expenses
+                    }
+                );
+            }
+        }
+    }
+    localStorage.setItem('mapIncomeExpensesByDate', JSON.stringify(Array.from(monthlyArray.entries())));
+    mapIncomeExpensesByDate = monthlyArray;
 }
 
 // Generate line graph showing day by day income and expenses
@@ -766,6 +953,7 @@ function generateResultsAdvice(map) {
 function loadResultsPage() {
     updateCategoryMaps(mapIncome, mapIncomeCategories);
     updateCategoryMaps(mapExpenses, mapExpenseCategories);
+    generateIncomeExpensesByDate(mapIncome, mapExpenses);
     console.log("load");
 }
 
