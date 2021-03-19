@@ -495,7 +495,7 @@ function addOrUpdateItem() {
         mapExpenses.set(expenseId, item);
         localStorage.setItem("mapExpenses", JSON.stringify(Array.from(mapExpenses.entries())));
     } else {
-        let incomeId = udpatingItem ? parseInt(form.itemId.value) : mapIncome.size + 1;
+        let incomeId = updatingItem ? parseInt(form.itemId.value) : mapIncome.size + 1;
         mapIncome.set(incomeId, item);
         localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
     }
