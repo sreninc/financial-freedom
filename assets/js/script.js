@@ -458,6 +458,8 @@ function calculateMonthlyPercentage() {
 
     populateTableData("income", mapIncome);
     populateTableData("expenses", mapExpenses);
+    localStorage.setItem("mapIncome", JSON.stringify(Array.from(mapIncome.entries())));
+    localStorage.setItem("mapExpenses", JSON.stringify(Array.from(mapExpenses.entries())));
 }
 
 // Populates the appropriate table with the data from income or expenses map object
