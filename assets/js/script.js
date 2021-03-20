@@ -936,7 +936,94 @@ function generateIncomeExpensesByDate(incomeMap, expensesMap) {
 
 // Generate line graph showing day by day income and expenses
 function createResultsChart(ctx, map) {
+    let labels = [];
+    let income = [];
+    let expenses = [];
+    let incomeAccrual = 0;
+    let expensesAccrual = 0;
 
+    for (const [key, value] of map) {
+        incomeAccrual += value.income;
+        expensesAccrual += value.expenses;
+        labels.push(key);
+        income.push(incomeAccrual);
+        expenses.push(expensesAccrual);
+    }
+
+    var chart = new Chart(
+        ctx,
+        {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Income',
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    data: income,
+                    datalabels: {
+                        align: 'end',
+                        anchor: 'end'
+                    }
+                }, 
+                {
+                    label: 'Expenses',
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    data: expenses,
+                    datalabels: {
+                        align: 'start',
+                        anchor: 'start'
+                    }
+                }]
+            },
+            options: {
+                legend: {
+
+                },
+                plugins: {
+                    datalabels: {
+                        backgroundColor: function(context) {
+                            return context.dataset.backgroundColor;
+                        },
+                        borderRadius: 4,
+                        color: 'white',
+                        font: {
+                            weight: 'bold'
+                        },
+                        formatter: Math.round,
+                        padding: 6,
+                        display: function(context) {
+                            return context.dataIndex % 2; // Only display odd numbered labels for ease of display
+                        }
+                    }
+                },
+                aspectRatio: 5 / 3,
+                layout: {
+                    padding: {
+                        top: 32,
+                        right: 16,
+                        bottom: 35,
+                        left: 8
+                    }
+                },
+                elements: {
+                    line: {
+                        fill: false
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        stacked: false,
+                        display: true
+                    }],
+                    xAxes: [{
+                        display: false
+                    }]
+                }
+            }
+        }
+    );
 }
 
 // Generates a pie chart showing spend by income or expense category
