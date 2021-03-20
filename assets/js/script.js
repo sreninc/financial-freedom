@@ -1147,7 +1147,34 @@ function createResultsPieChart(ctx, map) {
 
 // Generates cards showing advice based on the monthly percentage for an income or expenses item compared to the recommended percentage in the category map
 function generateResultsAdvice(map) {
-
+    let resultArea = document.getElementById('resultsAdvice');
+    for (const [key, value] of map.entries()) {
+        if (value.showAdvice === true) {
+            resultArea.insertAdjacentHTML(
+                'beforeend',
+                `
+                    <div class="card m-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                ${key}
+                            </h5>
+                            <p class="card-text">
+                                ${value.advice}
+                            </p>
+                        </div>
+                        <div class="card-body d-flex justify-content-evenly">
+                            <a href="${value.blogLink}" class="btn btn-primary">
+                                Read Blog
+                            </a>
+                            <a href="${value.actionLink}" class="btn btn-primary">
+                                Take Action
+                            </a>
+                        </div>
+                    </div>
+                `
+            );
+        }
+    }
 }
 
 // Updates the category and date maps before loading the results page
