@@ -1,3 +1,17 @@
+/* Homepage Custom CSS */
+.icon {
+    max-width: 100px;
+    margin: 20px;
+}
+
+.row {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 20px 0;
+}
 
 /* Dashboard Custom CSS */
 .chart-container {
