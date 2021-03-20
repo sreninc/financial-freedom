@@ -13,9 +13,9 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
+            advice: "Broadband, like utilities can often be found cheaper if you switch on a yearly basis. Many suppliers offer deals for 6 momnths in a 12 month contract so make sure to shop around.",
+            blogLink: "https://www.moneyguideireland.com/cheapest-phone-and-broadband-package.html",
+            actionLink: "https://switcher.ie/broadband/compare/cheap-broadband/",
             recommendedPercentageOfIncome: 2,
             showAdvice: false,
             backgroundColor: "#FFB5E8"
@@ -26,10 +26,10 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "In Ireland your rent or mortgage is often the biggest chunk of your expenditure. Reviewing your living situation can take a lot of pressure off you. Look to move to a cheaper rental or consider selling your home and moving into a cheaper option if possible.",
+            blogLink: "https://www.daveramsey.com/blog/how-much-rent-can-i-afford",
+            actionLink: "https://www.daft.ie/",
+            recommendedPercentageOfIncome: 25,
             showAdvice: false,
             backgroundColor: "#B28DFF"
         }
@@ -39,10 +39,10 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Utilities in Ireland absolutely should be changed every single year. The amount you save from switching at the end of each contract is considerable. Also look at timer switches or smart plugs across your home to help improve your energy efficiency easily.",
+            blogLink: "https://www.moneysupermarket.com/gas-and-electricity/energy-saving-tips/",
+            actionLink: "https://www.bonkers.ie/compare-gas-electricity-prices/dual-fuel/",
+            recommendedPercentageOfIncome: 4,
             showAdvice: false,
             backgroundColor: "#BFFC66"
         }
@@ -52,9 +52,9 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
+            advice: "Advances in technology have meant significant decreases in mobile purchase an plan costs. If you have a landline consider removing it, line rentals add up each month. For your mobile consider moving providers and only going pay as you go. Bill pay may seem attractive however it is vastly more expensive than pay as you go.",
+            blogLink: "https://www.thejournal.ie/mobile-plan-consider-2015-2409066-Nov2015/#:~:text=While%20it%20may%20seem%20like,expensive%20over%20the%20long%2Dterm.",
+            actionLink: "https://switcher.ie/mobiles/guides/sim-only/compare-sim-only-bill-pay-deals/",
             recommendedPercentageOfIncome: 2,
             showAdvice: false,
             backgroundColor: "#FFABAB"
@@ -65,10 +65,10 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Groceries are a big part of your budget. Consider where you shop at the moment and also look at writing a shopping list and setting a budget before heading to the shop. With groceries random snacks from the corner shop are often where you see big overspends.",
+            blogLink: "https://www.daveramsey.com/blog/ways-to-save-on-groceries",
+            actionLink: "https://www.moneyguideireland.com/supermarket-price-comparison-ireland.html",
+            recommendedPercentageOfIncome: 15,
             showAdvice: false,
             backgroundColor: "#FFD700"
         }
