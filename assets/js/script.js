@@ -334,9 +334,16 @@ function toggleCategory(type) {
     const categories = document.getElementById("category").options;
     let select = true; 
 
+    if(type === "income") {
+        document.getElementById('btnradio1').checked = false;
+        document.getElementById('btnradio3').checked = true;
+    } else {
+        document.getElementById('btnradio1').checked = true;
+        document.getElementById('btnradio3').checked = false;
+    }
+
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
-
         const matchesType = element.classList.contains(type);
         if (matchesType) {
             element.classList.remove("d-none");
