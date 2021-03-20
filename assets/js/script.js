@@ -745,7 +745,7 @@ function updateCategoryMaps(entryMap, categoryMap) {
 // Generates a day by day income & expense map used to show the user a line graph of income and expense over a month
 function generateIncomeExpensesByDate(incomeMap, expensesMap) {
     let monthlyArray = new Map();
-    for (let i = 0; i <= datesOfMonth.length; i++) {
+    for (let i = 1; i <= datesOfMonth.length; i++) {
         monthlyArray.set(
             i,
             {
