@@ -272,6 +272,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 ## Credits and Attributions
 
 1. Code to sort maps by key values: https://stackoverflow.com/questions/31158902/is-it-possible-to-sort-a-es6-map-object/51242261
+1. Code to capitalize first letter of a string: https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
 1. chartjs.org used for all charts and examples taken from their website
 1. chartjs-datalabels used to alter the display of tables 
 1. Bootstrap

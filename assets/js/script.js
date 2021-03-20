@@ -474,14 +474,9 @@ function populateTableData(table, map) {
             'beforeend',
             `
                 <td colspan="8" class="text-center">
-                    <p>
-                        Add Your First Item
-                    </p>
-                    <p class="mb-7 mb-md-9 aos-init aos-animate" data-aos="fade-up" data-aos-delay="150">
-                        <a class="btn btn-primary shadow lift" data-bs-toggle="modal" data-bs-target="#addItemModal">
-                            Add New Item <i data-feather="arrow-right"></i>
-                        </a>
-                    </p>
+                    <button class="btn btn-primary shadow lift m-3" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                        Add ${table.charAt(0).toUpperCase() + table.slice(1)} <i data-feather="arrow-right"></i>
+                    </button>
                 </td>
             `
         );
@@ -625,10 +620,8 @@ function updateIncomeExpensesBarChart() {
 
     if (totalExpenses + totalIncome === 0) {
         document.getElementById("chartContainer").classList.add("d-none");
-        document.getElementById("newUserInfo").classList.remove("d-none");
     } else {
         document.getElementById("chartContainer").classList.remove("d-none");
-        document.getElementById("newUserInfo").classList.add("d-none");
     }
 
     if (totalExpenses > 0 && totalIncome > 0) {

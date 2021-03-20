@@ -1,0 +1,36 @@
+
+/* Dashboard Custom CSS */
+#chartContainer {
+    width: 100%;
+    margin: auto;
+}
+
+#expenses tr > *:nth-child(2),
+#expenses tr > *:nth-child(4),
+#expenses tr > *:nth-child(5),
+#expenses tr > *:nth-child(6),
+#income tr > *:nth-child(2),
+#income tr > *:nth-child(4),
+#income tr > *:nth-child(5),
+#income tr > *:nth-child(6) {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    #expenses tr > *:nth-child(2),
+    #expenses tr > *:nth-child(4),
+    #expenses tr > *:nth-child(5),
+    #expenses tr > *:nth-child(6),
+    #income tr > *:nth-child(2),
+    #income tr > *:nth-child(4),
+    #income tr > *:nth-child(5),
+    #income tr > *:nth-child(6) {
+        display: table-cell;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #chartContainer {
+        width: 50%;
+    }
+}

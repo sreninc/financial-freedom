@@ -57,15 +57,15 @@
         <div class="row justify-content-center py-3">
             <div class="col-12 col-md-10 col-lg-8 text-center">
                 <h6 class="text-uppercase text-primary aos-init aos-animate" data-aos="fade-up">
-                    Financial Freedom
+                    Your Finances
                 </h6>
                 
                 <h1 class="display-1 font-weight-bold aos-init aos-animate" data-aos="fade-up" data-aos-delay="50">
-                    Your Finances.
+                    Dashboard.
                 </h1>
 
                 <p class="lead text-muted mb-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                    We created a simple, safe, and easy-to-use process for bringing you to financial freedom.
+                    The first step towards Financial Freedom is understanding your income and expenses. Click add item below to start adding your items for a typical month. Once you are done, review what you have entered and then click get your advice at the bottom of the page to start your journey.
                 </p>
 
                 <p class="mb-7 mb-md-9 aos-init aos-animate" data-aos="fade-up" data-aos-delay="150">
@@ -152,40 +152,13 @@
 </div> <!-- Ends #add-item Modal -->
 
     <section> <!-- Starts Main Page Cotent -->
-        <div style="width:50%; margin:auto;" id="chartContainer">
+        <div id="chartContainer">
             <canvas id="canvas"></canvas>
         </div>
 
-        <div style="width:50%; margin:auto;" id="newUserInfo">
-            <ol>
-                <li>
-                    Click Add New Item
-                </li>
-                <li>
-                    Choose Income or Expense
-                </li>
-                <li>
-                    Fill in the rest of the details about the item
-                </li>
-                <li>
-                    Save and see the item in a bar chart and the income or expense table below
-                </li>
-                <li>
-                    Keep adding more items until all your income and expenses are completed
-                </li>
-                <li>
-                    Click Get Your Advice
-                </li>
-            </ol>
-        </div>
-
-        <!-- Button -->
-        <p class="mb-7 mb-md-9 aos-init aos-animate text-center mt-5 mb-5" data-aos="fade-up" data-aos-delay="150">
-            <a class="btn btn-primary shadow lift" onclick="loadResultsPage();" id="getAdviceButton">
-                Get Your Advice <i data-feather="arrow-right"></i>
-            </a>
-        </p>
-
+        <h2>
+            Your Income
+        </h2>
         <div class="table-responsive">
             <table class="table table-info table-hover table-striped" id="income">
                 <thead>
@@ -220,6 +193,9 @@
             </table>
         </div>
 
+        <h2>
+            Your Expenses
+        </h2>
         <div class="table-responsive">
             <table class="table table-info table-hover table-striped" id="expenses">
                 <thead>
@@ -252,6 +228,17 @@
                 </thead>
                 <tbody></tbody>
             </table>
+        </div>
+
+        <hr class="mt-5 mb-5">
+
+        <div id="dashboardGetAdvice" class="text-center m-5">
+            <p>
+                Add at least one income and expense so you can get your advice. The more items you add the better your advice will be!
+            </p>
+            <button class="btn btn-primary shadow lift" onclick="loadResultsPage();" id="getAdviceButton">
+                Get Your Advice <i data-feather="arrow-right"></i>
+            </button>
         </div>
     </section> <!-- Ends Main Page Content -->
 
