@@ -686,10 +686,14 @@ function editItem(type, id) {
     if (type === "expenses") {
         form.btnradio1.checked = true;
         form.btnradio3.checked = false;
+        form.btnradio3.nextElementSibling.classList.add("invisible");
+        form.btnradio1.nextElementSibling.classList.remove("invisible");
         item = mapExpenses.get(id);
     } else {
         form.btnradio1.checked = false;
         form.btnradio3.checked = true;
+        form.btnradio3.nextElementSibling.classList.remove("invisible");
+        form.btnradio1.nextElementSibling.classList.add("invisible");
         item = mapIncome.get(id);
     }
 
