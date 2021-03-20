@@ -1036,7 +1036,113 @@ function createResultsChart(ctx, map) {
 
 // Generates a pie chart showing spend by income or expense category
 function createResultsPieChart(ctx, map) {
+    let labels = [];
+    let percentage = [];
+    let amount = [];
+    let backgroundColor = [];
+    for (const [key, value] of map) {
+        if (value.totalAmount > 0) {
+            labels.push(key);
+            percentage.push(value.totalMonthlyPercentage);
+            amount.push(value.totalAmount);
+            backgroundColor.push(value.backgroundColor);
+        }
+    }
 
+    var chart = new Chart(
+        ctx,
+        {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    backgroundColor: backgroundColor,
+                    hoverBorderColor: 'white',
+                    data: amount,
+                    datalabels: {
+                        labels: {
+                            index: {
+                                align: 'end',
+                                anchor: 'end',
+                                color: function(ctx) {
+                                    return ctx.dataset.backgroundColor;
+                                },
+                                font: {
+                                    size: 18
+                                },
+                                formatter: function(value, ctx) {
+                                    return "€" + value;
+                                },
+                                offset: 8,
+                                opacity: function(ctx) {
+                                    return ctx.active ? 1 : 0.5;
+                                }
+                            },
+                            name: {
+                                align: 'top',
+                                font: {
+                                    size: 16
+                                },
+                                formatter: function(value, ctx) {
+                                    return ctx.chart.data.labels[ctx.dataIndex];
+                                }
+                            },
+                            value: {
+                                align: 'bottom',
+                                backgroundColor: function(ctx) {
+                                    var value = ctx.dataset.data[ctx.dataIndex];
+                                    return value > 50 ? 'white' : null;
+                                },
+                                borderColor: 'white',
+                                borderWidth: 2,
+                                borderRadius: 4,
+                                color: function(ctx) {
+                                    var value = ctx.dataset.data[ctx.dataIndex];
+                                    return value > 50 ? ctx.dataset.backgroundColor : 'white';
+                                },
+                                formatter: function(value, ctx) {
+                                    return Math.round(percentage[ctx.dataIndex]) + '%';
+                                },
+                                padding: 4
+                            }
+                        }
+                    }
+                }]
+            },
+            options: {
+                plugins: {
+                    datalabels: {
+                        color: 'white',
+                        display: function(ctx) {
+                            return ctx.dataset.data[ctx.dataIndex] > 10;
+                        },
+                        font: {
+                            weight: 'bold'
+                        },
+                        offset: 0,
+                        padding: 0
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                aspectRatio: 3 / 2,
+                cutoutPercentage: 12,
+                layout: {
+                    padding: 30
+                },
+                elements: {
+                    line: {
+                        fill: false
+                    },
+                    point: {
+                        hoverRadius: 7,
+                        radius: 5
+                    }
+                }
+            }
+        }
+    );
 }
 
 // Generates cards showing advice based on the monthly percentage for an income or expenses item compared to the recommended percentage in the category map
