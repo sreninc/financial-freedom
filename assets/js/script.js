@@ -735,7 +735,7 @@ function updateCategoryMaps(entryMap, categoryMap) {
                 advice: categoryMap.get(value.category).advice,
                 blogLink: categoryMap.get(value.category).blogLink,
                 recommendedPercentageOfIncome: categoryMap.get(value.category).recommendedPercentageOfIncome,
-                showAdvice: categoryMap.get(value.category).showAdvice,
+                showAdvice: (categoryMap.get(value.category).totalMonthlyPercentage += value.percentageMonthlyIncome) > categoryMap.get(value.category).recommendedPercentageOfIncome ? true : false,
                 backgroundColor: categoryMap.get(value.category).backgroundColor
             }
         );
