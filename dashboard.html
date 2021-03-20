@@ -273,22 +273,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
     <script>
-      feather.replace();
+        feather.replace();
 
-      const mapIncome = newUserOrExisting()[0];
-      const mapExpenses = newUserOrExisting()[1];
-      const ctxIncomeExpenses = document.getElementById('canvas').getContext('2d');
-      var chartIncomeExpenses = generateIncomeExpensesBarChart(ctxIncomeExpenses);
+        const mapIncome = newUserOrExisting()[0];
+        const mapExpenses = newUserOrExisting()[1];
+        const ctxIncomeExpenses = document.getElementById('canvas').getContext('2d');
+        var chartIncomeExpenses = generateIncomeExpensesBarChart(ctxIncomeExpenses);
 
-      document.addEventListener(
-          'DOMContentLoaded',
-          function() 
-          {
-            populateAddItemFormSelects();
-            updateIncomeExpensesBarChart();
-          },
-          false
-      );
+        document.addEventListener(
+            'DOMContentLoaded',
+            function() 
+            {
+                populateAddItemFormSelects();
+                updateIncomeExpensesBarChart();
+            },
+            false
+        );
+
+        document.getElementById('addItemModal').addEventListener(
+            'hidden.bs.modal', function (event) {
+                document.getElementById('add-item').reset();
+            }
+        );
     </script>
 </body>
 </html>
