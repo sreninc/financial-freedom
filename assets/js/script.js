@@ -950,6 +950,14 @@ function createResultsChart(ctx, map) {
         expenses.push(expensesAccrual);
     }
 
+    if(income[income.length -1] >= expenses[expenses.length -1]) {
+        document.getElementById('positiveIncome').classList.remove('d-none');
+        document.getElementById('negativeIncome').classList.add('d-none');
+    } else {
+        document.getElementById('positiveIncome').classList.add('d-none');
+        document.getElementById('negativeIncome').classList.remove('d-none');
+    }
+
     var chart = new Chart(
         ctx,
         {
