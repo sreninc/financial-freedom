@@ -301,12 +301,14 @@ function populateAddItemFormSelects() {
         const option = document.createElement("option");
         option.text = value[0];
         option.value = value[0];
+        option.classList.add("expense");
         selectCategory.add(option);
     }
     for (const value of mapIncomeCategories) {
         const option = document.createElement("option");
         option.text = value[0];
         option.value = value[0];
+        option.classList.add("income");
         option.classList.add("d-none");
         selectCategory.add(option);
     }
@@ -334,8 +336,9 @@ function toggleCategory(type) {
 
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
-        const display = element.classList.contains("d-none");
-        if (display) {
+
+        const matchesType = element.classList.contains(type);
+        if (matchesType) {
             element.classList.remove("d-none");
 
             if (select) {
