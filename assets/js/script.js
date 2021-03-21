@@ -74,55 +74,16 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Eating Out", 
-        {
-            totalAmount: 0,
-            totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
-            showAdvice: false,
-            backgroundColor: "#6EB5FF"
-        }
-    );
-    map.set(
-        "Household", 
-        {
-            totalAmount: 0,
-            totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
-            showAdvice: false,
-            backgroundColor: "#85E3FF"
-        }
-    );
-    map.set(
         "Car", 
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Transport, and more particullary a car, is a major expense. If you take public transport switch to an annual pass. If you have a car work to get rid of your car loan as quickly as possible. Car loans are a major loss of money.",
+            blogLink: "https://www.cashfloat.co.uk/blog/money-borrowing/cut-car-costs/",
+            actionLink: "https://www.taxsaver.ie/Ticket-Types/Annual-Tickets/",
+            recommendedPercentageOfIncome: 10,
             showAdvice: false,
             backgroundColor: "#FFBEBC"
-        }
-    );
-    map.set(
-        "Insurance", 
-        {
-            totalAmount: 0,
-            totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
-            showAdvice: false,
-            backgroundColor: "#97A2FF"
         }
     );
     map.set(
@@ -130,38 +91,12 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Holidays are the perfect way to relax and unwind. However they don't have to break the bank. Book direct instead of using travel agents and think about travelling to less popular destinations such as eastern europe.",
+            blogLink: "https://www.independent.co.uk/travel/cheap-holidays-europe-spain-majorca-hungary-budapest-croatia-dubrovnik-budget-flights-hotels-a8272021.html",
+            actionLink: "https://www.skyscanner.ie/",
+            recommendedPercentageOfIncome: 5,
             showAdvice: false,
             backgroundColor: "#C4FAF8"
-        }
-    );
-    map.set(
-        "Gifts", 
-        {
-            totalAmount: 0,
-            totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
-            showAdvice: false,
-            backgroundColor: "#A79AFF"
-        }
-    );
-    map.set(
-        "Loans", 
-        {
-            totalAmount: 0,
-            totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
-            showAdvice: false,
-            backgroundColor: "#F6A6FF"
         }
     );
     map.set(
@@ -169,10 +104,10 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Credit card debt is often the highest debt cost you will have in your life. Take steps today to start reducing your credit card debt.",
+            blogLink: "https://www.askpaul.ie/smart-ways-to-eliminate-credit-card-debt/",
+            actionLink: "https://www.nationaldebtrelief.ie/debt-settlement-arrangement.html",
+            recommendedPercentageOfIncome: 1,
             showAdvice: false,
             backgroundColor: "#BFFCC6"
         }
@@ -182,10 +117,10 @@ function generateMapExpenseCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            advice: "",
             blogLink: "",
             actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            recommendedPercentageOfIncome: 100000000,
             showAdvice: false,
             backgroundColor: "#E7FFAC"
         }
@@ -201,25 +136,12 @@ function generateMapIncomeCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "A salary for most people is their only source of income. While there is nothing wrong with this, if you want to be financially free you need to expand into different income streams. Freelancing is a great way to start.",
+            blogLink: "https://www.askpaul.ie/create-another-source-income-heres/",
+            actionLink: "https://www.upwork.com/",
+            recommendedPercentageOfIncome: 90,
             showAdvice: false,
             backgroundColor: "#FF9AA2"
-        }
-    );
-    map.set(
-        "Bonus", 
-        {
-            totalAmount: 0,
-            totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
-            showAdvice: false,
-            backgroundColor: "#FFB7B2"
         }
     );
     map.set(
@@ -227,10 +149,10 @@ function generateMapIncomeCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Investing comes in many shapes and forms, shares and bonds being the most popular. Research and investigation leads to a solid choice and yearly returns as well as growth on your investment.",
+            blogLink: "https://moneycube.ie/5-tips-beginner-investor-ireland/",
+            actionLink: "https://www.kbc.ie/investments/new-to-investment",
+            recommendedPercentageOfIncome: 5,
             showAdvice: false,
             backgroundColor: "#FFDAC1"
         }
@@ -240,10 +162,10 @@ function generateMapIncomeCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Starting and running a business can be scary and has a high rate of failure. However even moderately successful businesses or a side business can be greatly rewarding and an excellent way to start a business.",
+            blogLink: "https://www.citizensinformation.ie/en/employment/types_of_employment/self_employment/setting_up_a_business_in_ireland.html",
+            actionLink: "https://www.revenue.ie/en/starting-a-business/index.aspx",
+            recommendedPercentageOfIncome: 5,
             showAdvice: false,
             backgroundColor: "#E2F0CB"
         }
@@ -253,10 +175,10 @@ function generateMapIncomeCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            blogLink: "",
-            actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            advice: "Rental properties are a great source of residual income and also an excellent store of wealth. When invested in wisely property has an excellent rate of return.",
+            blogLink: "https://personalbanking.bankofireland.com/borrow/mortgages/articles/thinking-investment-property/",
+            actionLink: "https://www.daft.ie/",
+            recommendedPercentageOfIncome: 5,
             showAdvice: false,
             backgroundColor: "#B5EAD7"
         }
@@ -266,10 +188,10 @@ function generateMapIncomeCategories() {
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
-            advice: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            advice: "",
             blogLink: "",
             actionLink: "",
-            recommendedPercentageOfIncome: 2,
+            recommendedPercentageOfIncome: 10000,
             showAdvice: false,
             backgroundColor: "#C7CEEA"
         }
