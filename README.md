@@ -207,6 +207,9 @@ Below is a log of bugs or issues identified during testing as well as details on
 - [] Large numbers breaking charts
 - [] Negative numbers allowed
 
+### Known issues
+- The results line chart does not display in an easily readable format on small screens. 
+
 ***
 
 ## Potential Future Features
