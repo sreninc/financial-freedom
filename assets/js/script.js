@@ -1,15 +1,15 @@
 /*jshint esversion: 6 */
 
-// If either income or expense is already present in localStorage use that. Otherwise generate default category maps. 
-const mapExpenseCategories = localStorage.mapExpenseCategories ? new Map(JSON.parse(localStorage.mapExpenseCategories)) : generateMapExpenseCategories();
-const mapIncomeCategories = localStorage.mapIncomeCategories ? new Map(JSON.parse(localStorage.mapIncomeCategories)) : generateMapIncomeCategories();
-var mapIncomeExpensesByDate = localStorage.mapIncomeExpensesByDate ? new Map(JSON.parse(localStorage.mapIncomeExpensesByDate)) : new Map();
+// If either income or expense is already present in localStorage use that. Otherwise generate default category maps.
+const mapExpenseCategories = (localStorage.mapExpenseCategories ? new Map(JSON.parse(localStorage.mapExpenseCategories)) : generateMapExpenseCategories());
+const mapIncomeCategories = (localStorage.mapIncomeCategories ? new Map(JSON.parse(localStorage.mapIncomeCategories)) : generateMapIncomeCategories());
+var mapIncomeExpensesByDate = (localStorage.mapIncomeExpensesByDate ? new Map(JSON.parse(localStorage.mapIncomeExpensesByDate)) : new Map());
 
 // Setup default Expense Categpories for user input and results
 function generateMapExpenseCategories() {
     const map = new Map();
     map.set(
-        "Broadband", 
+        "Broadband",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -22,7 +22,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Rent or Mortgage", 
+        "Rent or Mortgage",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -35,7 +35,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Utilities", 
+        "Utilities",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -48,7 +48,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Phone & Mobile", 
+        "Phone & Mobile",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -61,7 +61,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Groceries", 
+        "Groceries",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -74,7 +74,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Car", 
+        "Car",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -87,7 +87,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Holidays", 
+        "Holidays",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -100,7 +100,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Credit Cards", 
+        "Credit Cards",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -113,7 +113,7 @@ function generateMapExpenseCategories() {
         }
     );
     map.set(
-        "Other", 
+        "Other",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -132,7 +132,7 @@ function generateMapExpenseCategories() {
 function generateMapIncomeCategories() {
     const map = new Map();
     map.set(
-        "Salary", 
+        "Salary",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -145,7 +145,7 @@ function generateMapIncomeCategories() {
         }
     );
     map.set(
-        "Investments", 
+        "Investments",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -158,7 +158,7 @@ function generateMapIncomeCategories() {
         }
     );
     map.set(
-        "Business", 
+        "Business",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -171,7 +171,7 @@ function generateMapIncomeCategories() {
         }
     );
     map.set(
-        "Property", 
+        "Property",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -184,7 +184,7 @@ function generateMapIncomeCategories() {
         }
     );
     map.set(
-        "Other", 
+        "Other",
         {
             totalAmount: 0,
             totalMonthlyPercentage: 0,
@@ -254,14 +254,14 @@ function populateAddItemFormSelects() {
 // When the #add-item form toggle for income/expenses is clicked change options
 function toggleCategory(type) {
     const categories = document.getElementById("category").options;
-    let select = true; 
+    let select = true;
 
     if(type === "income") {
-        document.getElementById('btnradio1').checked = false;
-        document.getElementById('btnradio3').checked = true;
+        document.getElementById("btnradio1").checked = false;
+        document.getElementById("btnradio3").checked = true;
     } else {
-        document.getElementById('btnradio1').checked = true;
-        document.getElementById('btnradio3').checked = false;
+        document.getElementById("btnradio1").checked = true;
+        document.getElementById("btnradio3").checked = false;
     }
 
     for (let i = 0; i < categories.length; i++) {
@@ -396,14 +396,14 @@ function calculateMonthlyPercentage() {
 
 // Populates the appropriate table with the data from income or expenses map object
 function populateTableData(table, map) {
-    let tableBody = document.getElementById(table).getElementsByTagName('tbody')[0];
+    let tableBody = document.getElementById(table).getElementsByTagName("tbody")[0];
     tableBody.remove();
-    tableBody = document.createElement('tbody');
+    tableBody = document.createElement("tbody");
     document.getElementById(table).appendChild(tableBody);
     if(map.size === 0) {
         const row = tableBody.insertRow(-1);
         row.insertAdjacentHTML(
-            'beforeend',
+            "beforeend",
             `
                 <td colspan="8" class="text-center">
                     <button class="btn btn-primary shadow lift m-3" data-bs-toggle="modal" data-bs-target="#addItemModal">
@@ -416,7 +416,7 @@ function populateTableData(table, map) {
         for (const elem of map.entries()) {
             const row = tableBody.insertRow(-1);
             row.insertAdjacentHTML(
-                'beforeend',
+                "beforeend",
                 `
                     <td>
                         ${elem[1].description}
@@ -458,24 +458,24 @@ function generateIncomeExpensesBarChart(ctxIncomeExpenses) {
     return new Chart(
         ctxIncomeExpenses,
         {
-            type: 'bar',
+            type: "bar",
             data: {
                 datasets: [{
-                    label: 'Income',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    label: "Income",
+                    backgroundColor: "rgba(54, 162, 235, 0.2)",
+                    borderColor: "rgba(54, 162, 235, 1)",
                     borderWidth: 1
                 }, {
-                    label: 'Expenses',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    label: "Expenses",
+                    backgroundColor: "rgba(255, 99, 132, 0.2)",
+                    borderColor: "rgba(255, 99, 132, 1)",
                     borderWidth: 1
                 }]
             },
             options: {
                 plugins: {
                     datalabels: {
-                        color: 'blue',
+                        color: "blue",
                         labels: {
                             value: {
                                 formatter: function(value) {
@@ -483,7 +483,7 @@ function generateIncomeExpensesBarChart(ctxIncomeExpenses) {
                                 }
                             },
                             name: {
-                                align: 'top',
+                                align: "top",
                                 font: {size: 16},
                                 formatter: function(value, ctx) {
                                     if (ctx.dataset.label === "Income") {
@@ -508,7 +508,7 @@ function generateIncomeExpensesBarChart(ctxIncomeExpenses) {
                 },
                 legend: {
                     display: false,
-                    position: 'bottom'
+                    position: "bottom"
                 },
                 scales: {
                     yAxes: [{
@@ -563,7 +563,7 @@ function updateIncomeExpensesBarChart() {
     }
 }
 
-// Adds data to the income expenses bar chart data array 
+// Adds data to the income expenses bar chart data array
 function addData(chartIncomeExpenses, data, order) {
     chartIncomeExpenses.data.datasets[order].data.push(data);
     chartIncomeExpenses.update();
@@ -861,7 +861,7 @@ function generateIncomeExpensesByDate(incomeMap, expensesMap) {
             }
         }
     }
-    localStorage.setItem('mapIncomeExpensesByDate', JSON.stringify(Array.from(monthlyArray.entries())));
+    localStorage.setItem("mapIncomeExpensesByDate", JSON.stringify(Array.from(monthlyArray.entries())));
     mapIncomeExpensesByDate = monthlyArray;
 }
 
@@ -882,37 +882,37 @@ function createResultsChart(ctx, map) {
     }
 
     if(income[income.length -1] >= expenses[expenses.length -1]) {
-        document.getElementById('positiveIncome').classList.remove('d-none');
-        document.getElementById('negativeIncome').classList.add('d-none');
+        document.getElementById("positiveIncome").classList.remove("d-none");
+        document.getElementById("negativeIncome").classList.add("d-none");
     } else {
-        document.getElementById('positiveIncome').classList.add('d-none');
-        document.getElementById('negativeIncome').classList.remove('d-none');
+        document.getElementById("positiveIncome").classList.add("d-none");
+        document.getElementById("negativeIncome").classList.remove("d-none");
     }
 
     var chart = new Chart(
         ctx,
         {
-            type: 'line',
+            type: "line",
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Income',
-                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    label: "Income",
+                    backgroundColor: "rgba(54, 162, 235, 0.7)",
+                    borderColor: "rgba(54, 162, 235, 1)",
                     data: income,
                     datalabels: {
-                        align: 'end',
-                        anchor: 'end'
+                        align: "end",
+                        anchor: "end"
                     }
-                }, 
+                },
                 {
-                    label: 'Expenses',
-                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    label: "Expenses",
+                    backgroundColor: "rgba(255, 99, 132, 0.7)",
+                    borderColor: "rgba(255, 99, 132, 1)",
                     data: expenses,
                     datalabels: {
-                        align: 'start',
-                        anchor: 'start'
+                        align: "start",
+                        anchor: "start"
                     }
                 }]
             },
@@ -926,9 +926,9 @@ function createResultsChart(ctx, map) {
                             return context.dataset.backgroundColor;
                         },
                         borderRadius: 4,
-                        color: 'white',
+                        color: "white",
                         font: {
-                            weight: 'bold'
+                            weight: "bold"
                         },
                         formatter: Math.round,
                         padding: 6,
@@ -983,18 +983,18 @@ function createResultsPieChart(ctx, map) {
     var chart = new Chart(
         ctx,
         {
-            type: 'doughnut',
+            type: "doughnut",
             data: {
                 labels: labels,
                 datasets: [{
                     backgroundColor: backgroundColor,
-                    hoverBorderColor: 'white',
+                    hoverBorderColor: "white",
                     data: amount,
                     datalabels: {
                         labels: {
                             index: {
-                                align: 'end',
-                                anchor: 'end',
+                                align: "end",
+                                anchor: "end",
                                 color: function(ctx) {
                                     return ctx.dataset.backgroundColor;
                                 },
@@ -1010,7 +1010,7 @@ function createResultsPieChart(ctx, map) {
                                 }
                             },
                             name: {
-                                align: 'top',
+                                align: "top",
                                 font: {
                                     size: 16
                                 },
@@ -1019,20 +1019,20 @@ function createResultsPieChart(ctx, map) {
                                 }
                             },
                             value: {
-                                align: 'bottom',
+                                align: "bottom",
                                 backgroundColor: function(ctx) {
                                     var value = ctx.dataset.data[ctx.dataIndex];
-                                    return value > 50 ? 'white' : null;
+                                    return value > 50 ? "white" : null;
                                 },
-                                borderColor: 'white',
+                                borderColor: "white",
                                 borderWidth: 2,
                                 borderRadius: 4,
                                 color: function(ctx) {
                                     var value = ctx.dataset.data[ctx.dataIndex];
-                                    return value > 50 ? ctx.dataset.backgroundColor : 'white';
+                                    return value > 50 ? ctx.dataset.backgroundColor : "white";
                                 },
                                 formatter: function(value, ctx) {
-                                    return Math.round(percentage[ctx.dataIndex]) + '%';
+                                    return Math.round(percentage[ctx.dataIndex]) + "%";
                                 },
                                 padding: 4
                             }
@@ -1043,12 +1043,12 @@ function createResultsPieChart(ctx, map) {
             options: {
                 plugins: {
                     datalabels: {
-                        color: 'white',
+                        color: "white",
                         display: function(ctx) {
                             return ctx.dataset.data[ctx.dataIndex] > 10;
                         },
                         font: {
-                            weight: 'bold'
+                            weight: "bold"
                         },
                         offset: 0,
                         padding: 0
@@ -1078,11 +1078,11 @@ function createResultsPieChart(ctx, map) {
 
 // Generates cards showing advice based on the monthly percentage for an income or expenses item compared to the recommended percentage in the category map
 function generateResultsAdvice(map) {
-    let resultArea = document.getElementById('resultsAdvice');
+    let resultArea = document.getElementById("resultsAdvice");
     for (const [key, value] of map.entries()) {
         if (value.showAdvice === true) {
             resultArea.insertAdjacentHTML(
-                'beforeend',
+                "beforeend",
                 `
                     <div class="card m-3" style="width: 18rem;">
                         <div class="card-body">
@@ -1113,14 +1113,14 @@ function loadResultsPage() {
     updateCategoryMaps(mapIncome, mapIncomeCategories);
     updateCategoryMaps(mapExpenses, mapExpenseCategories);
     generateIncomeExpensesByDate(mapIncome, mapExpenses);
-    localStorage.setItem('mapIncomeCategories', JSON.stringify(Array.from(mapIncomeCategories.entries())));
-    localStorage.setItem('mapExpenseCategories', JSON.stringify(Array.from(mapExpenseCategories.entries())));
-    window.open('results.html', '_self');
+    localStorage.setItem("mapIncomeCategories", JSON.stringify(Array.from(mapIncomeCategories.entries())));
+    localStorage.setItem("mapExpenseCategories", JSON.stringify(Array.from(mapExpenseCategories.entries())));
+    window.open("results.html", "_self");
 }
 
 // Logic used to load the contact form and emailjs form handling on the about.html page
 function loadContactFormLogic() {
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
         event.preventDefault();
         const templateParams = {
             from_name: this.from_name.value,
@@ -1128,7 +1128,7 @@ function loadContactFormLogic() {
             contact_type: this.contact_type.value,
             message: this.message.value
         };
-        emailjs.send('financial_freedom', 'financial_f_contact', templateParams)
+        emailjs.send("financial_freedom", "financial_f_contact", templateParams)
             .then(function(response) {
                 //console.log('SUCCESS!', response.status, response.text);
                 this.formSubmit.innerHTML = "Form Submitted";
