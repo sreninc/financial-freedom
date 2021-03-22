@@ -45,6 +45,6 @@
 
 @media only screen and (min-width: 992px) {
     .chart-container {
-        min-width: 50%;
+        width: 50%;
     }
 }
