@@ -4,7 +4,7 @@
 
 Financial Freedom is the website for helping people understand, and improve their personal finances. You can input your income and expenses to monitor your monthly performance and then get advice and data to help you improve on your current financial situation. **N.B.** Financial Freedom is an educational project and is not intended to replace financial advice from an expert. If you are in need of help please contact [MABS](https://www.mabs.ie) as a first step.
 
-[![Financial Freedom](assets/img/)](https://sreninc.github.io/financial-freedom/)
+[![Financial Freedom](assets/img/homepage.png)](https://sreninc.github.io/financial-freedom/)
 
 ## Table of Content 
 
