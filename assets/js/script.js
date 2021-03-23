@@ -918,7 +918,7 @@ function createResultsChart(ctx, map) {
             },
             options: {
                 legend: {
-
+                    position: 'bottom'
                 },
                 plugins: {
                     datalabels: {
@@ -932,9 +932,7 @@ function createResultsChart(ctx, map) {
                         },
                         formatter: Math.round,
                         padding: 6,
-                        display: function(context) {
-                            return context.dataIndex % 2; // Only display odd numbered labels for ease of display
-                        }
+                        display: 'auto'
                     }
                 },
                 aspectRatio: 5 / 3,
@@ -995,9 +993,7 @@ function createResultsPieChart(ctx, map) {
                             index: {
                                 align: "end",
                                 anchor: "end",
-                                color: function(ctx) {
-                                    return ctx.dataset.backgroundColor;
-                                },
+                                color: "black",
                                 font: {
                                     size: 18
                                 },
@@ -1006,7 +1002,7 @@ function createResultsPieChart(ctx, map) {
                                 },
                                 offset: 8,
                                 opacity: function(ctx) {
-                                    return ctx.active ? 1 : 0.5;
+                                    return ctx.active ? 1 : 0.9;
                                 }
                             },
                             name: {
@@ -1022,14 +1018,14 @@ function createResultsPieChart(ctx, map) {
                                 align: "bottom",
                                 backgroundColor: function(ctx) {
                                     var value = ctx.dataset.data[ctx.dataIndex];
-                                    return value > 50 ? "white" : null;
+                                    return value > 50 ? "black" : null;
                                 },
-                                borderColor: "white",
+                                borderColor: "black",
                                 borderWidth: 2,
                                 borderRadius: 4,
                                 color: function(ctx) {
                                     var value = ctx.dataset.data[ctx.dataIndex];
-                                    return value > 50 ? ctx.dataset.backgroundColor : "white";
+                                    return value > 50 ? ctx.dataset.backgroundColor : "black";
                                 },
                                 formatter: function(value, ctx) {
                                     return Math.round(percentage[ctx.dataIndex]) + "%";
@@ -1043,7 +1039,7 @@ function createResultsPieChart(ctx, map) {
             options: {
                 plugins: {
                     datalabels: {
-                        color: "white",
+                        color: "black",
                         display: function(ctx) {
                             return ctx.dataset.data[ctx.dataIndex] > 10;
                         },
