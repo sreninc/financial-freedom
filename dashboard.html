@@ -296,6 +296,9 @@
         document.getElementById('addItemModal').addEventListener(
             'hidden.bs.modal', function (event) {
                 document.getElementById('add-item').reset();
+                let form = document.getElementById("add-item");
+                form.btnradio3.nextElementSibling.classList.remove("invisible");
+                form.btnradio1.nextElementSibling.classList.remove("invisible");
             }
         );
     </script>

@@ -625,6 +625,8 @@ function editItem(type, id) {
     form.paymentAmount.value = item.amount;
     form.paymentFrequency.value = item.frequency;
     form.dueWhen.value = item.whenPaid;
+
+    toggleCategory(type);
 }
 
 // Removes item from mapIncome or mapExpenses and updates localStorage for the item
