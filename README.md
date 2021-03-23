@@ -202,8 +202,8 @@ Below is a log of bugs or issues identified during testing as well as details on
 - [x] Get Advice button allowing you in without filling in both items. This was sorted by simply changing the element to a button instead of an anchor
 - [x] Add-item form allowing you to change category type when editing. This was sorted by hiding the category button that wasn't relevant in the modal. This however raised another issue in that the default category options were for Expense, so when income was chosen the user could save with the incorrect category types. I solved this by adding toggleCategory() function to the editItem() function.
 - [x] Advice buttons not all being the same size on various screen sizes. After investigation this was happening because there were 2 card-body class elements in the code for each card. Changing the second element to card-footer class sorted the issue with buttons showing different sizes.
-- [] Large numbers breaking charts
-- [] Negative numbers allowed
+- [x] Large numbers breaking charts - added a validation function that stops form submission if the description or amount is not suitable or missing. If validation is okay it runs additem and clicks the dismiss button.
+- [x] Negative numbers allowed - as above
 
 ### Known issues
 - The results line chart does not display in an easily readable format on small screens. While I fixed the labels to not overlap and reduce the number of labels that was generated to ameliorate the issue it isn't solved. Ideally a chart conveying the same meaning would be present for mobile devices.
