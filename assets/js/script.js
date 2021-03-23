@@ -1089,7 +1089,7 @@ function generateResultsAdvice(map) {
                                 ${value.advice}
                             </p>
                         </div>
-                        <div class="card-body d-flex justify-content-evenly">
+                        <div class="card-footer bg-white border-top-0 d-flex justify-content-evenly">
                             <a href="${value.blogLink}" class="btn btn-primary">
                                 Read Blog
                             </a>
