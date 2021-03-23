@@ -93,7 +93,6 @@ From the design and UX research it is clear that blue/gold are standard industry
 I used Balsamiq to render initial rough wireframes for the websites pages. Once I was happy with the overall layout across screens I did more in-depth mockups in figma including mock imagery and colors. I used the figma mockups to write the rest of the readme before beginning code to help shape the code. I also wrote out the functions I intend to use for the project in Evernote to help me structure the Javascript side of the project. 
 
 [Balsamiq Wireframes](https://balsamiq.cloud/sjgxg4g/pkp2z1d)
-[Figma Mockups](https://www.figma.com/file/ClUEZ5thbZZEBL5mIYxCmn/Code-Institute-Milestone-Project-2?node-id=0%3A1)
 [Evernote - Functions](https://www.evernote.com/shard/s666/sh/5b0a2578-28b6-3c21-055c-814c5042648d/4f7760f8710d668d11f92e24e4b32baf)
 
 ***
