@@ -47,4 +47,8 @@
     .chart-container {
         width: 50%;
     }
+
+    .pie-chart-text {
+        width: 50%;
+    }
 }
