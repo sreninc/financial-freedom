@@ -318,9 +318,30 @@ function toggleDate(type) {
     }
 }
 
-// #add-item submit action where the item is added to either mapIncome or mapExpenses
-function addOrUpdateItem() {
+// Checks the data validity of the #add-item form prior to adding the item
+function validateAddItemForm() {
     let form = document.getElementById("add-item");
+
+    if(!form.description.value || form.description.value.length > 100) {
+        form.description.classList.add("is-invalid");
+    } else {
+        form.description.classList.remove("is-invalid");
+    }
+
+    if(!form.paymentAmount.value || form.paymentAmount.value > 1000000) {
+        form.paymentAmount.classList.add("is-invalid");
+    } else {
+        form.paymentAmount.classList.remove("is-invalid");
+    }
+
+    if(form.description.value && form.paymentAmount.value && form.description.value.length <= 100 && form.paymentAmount.value <= 1000000) {
+        addOrUpdateItem(form);
+        document.getElementById("addItemClose").click();
+    }
+}
+
+// #add-item submit action where the item is added to either mapIncome or mapExpenses
+function addOrUpdateItem(form) {
     let updatingItem = form.itemId.value ? true : false;
 
     let item = {
