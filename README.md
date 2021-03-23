@@ -1,6 +1,6 @@
 # Financial Freedom
 
-[Click To See Live Site](https://sreninc.github.io/financial-freedoms/)
+[Click To See Live Site](https://sreninc.github.io/financial-freedom/)
 
 Financial Freedom is the website for helping people understand, and improve their personal finances. You can input your income and expenses to monitor your monthly performance and then get advice and data to help you improve on your current financial situation. **N.B.** Financial Freedom is an educational project and is not intended to replace financial advice from an expert. If you are in need of help please contact [MABS](https://www.mabs.ie) as a first step.
 
@@ -18,7 +18,7 @@ Financial Freedom is the website for helping people understand, and improve thei
 
 - [Website Pages and Features](#website-pages-and-features)
     - [Homepage](#homepage)
-    - [About](#about)
+    - [Contact](#contact)
         1. [Contact](#contact)
     - [Dashboard](#dashboard)
         1. [New User](#new-user)
@@ -33,7 +33,7 @@ Financial Freedom is the website for helping people understand, and improve thei
 
 - [Testing](#testing)
     - [Homepage](#homepage)
-    - [About](#about)
+    - [Contact](#contact)
     - [Dashboard](#dashboard)
     - [Results](#results)
 
@@ -102,10 +102,8 @@ I used Balsamiq to render initial rough wireframes for the websites pages. Once 
 
 ### Homepage
 
-### About
-The about page contains information about the business and a contact form that can be filled in by the user when they have questions or get stuck using a part of the website. 
-
-**N.B.** As an education project the form submits to the email entered by the user so you can see what email the business would receive if the website was an actual business.
+### Contact
+The contact page contains a contact form that can be filled in by the user when they have questions or get stuck using a part of the website. 
 
 ### Dashboard
 The dashboard is the main user input page on the website and is where the user is likely to spend the majority of their time. At least initially. 
@@ -147,25 +145,25 @@ For all pages check the responsiveness, image quality, video quality, text displ
 1. Android Phone on Chrome and Samsung browsers.
 1. Microsoft Edge Browser on the 6 pre-set screen sizes in inspection mode.
 
+[W3C CSS Validator]() | [JSLint.org]()
+
 ### Homepage
 Ensure the video can be played easily on all screen sizes.
 
-[W3C CSS Validator]() |
-[W3C Markup Validator]() |
-[Lighthouse]() |
-[JSLint.org]()
+[W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsreninc.github.io%2Ffinancial-freedom%2F) |
+[Lighthouse Desktop](assets/readme-images/desktop/index.pdf) |
+[Lighthouse Mobile](assets/readme-images/mobile/index.pdf)
 
-### About
+### Contact
 1. Try to send the contact form with incorrect email address formatting. 
 1. Try to send the contact form with no information provided. 
 1. Try to send the contact form with no category selected.
-1. Ensure the contact form is received to the email address provided.
+1. Ensure the contact form is received to my email address.
 1. Does the confirmation message show once the form is submitted.
 
-[W3C CSS Validator]() |
-[W3C Markup Validator]() |
-[Lighthouse]() |
-[JSLint.org]()
+[W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsreninc.github.io%2Ffinancial-freedom%2Fcontact.html) |
+[Lighthouse Desktop](assets/readme-images/desktop/contact.pdf) |
+[Lighthouse Mobile](assets/readme-images/mobile/contact.pdf)
 
 ### Dashboard
 1. Does the new user information show correctly.
@@ -179,10 +177,9 @@ Ensure the video can be played easily on all screen sizes.
 1. Does the get your advice button only work when I have entered at least 1 income and 1 expense.
 1. When editing an item can I change the type of the item.
 
-[W3C CSS Validator]() |
-[W3C Markup Validator]() |
-[Lighthouse]() |
-[JSLint.org]()
+[W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsreninc.github.io%2Ffinancial-freedom%2Fdashboard.html) |
+[Lighthouse Desktop](assets/readme-images/desktop/dashboard.pdf) |
+[Lighthouse Mobile](assets/readme-images/mobile/dashboard.pdf)
 
 ### Results
 1. Does the dynamic text show the correct response based on my income and expenses?
@@ -193,22 +190,23 @@ Ensure the video can be played easily on all screen sizes.
 1. Can I go back to the dashboard page with ease?
 1. If no advice is available does the success text appear correctly?
 
-[W3C CSS Validator]() |
-[W3C Markup Validator]() |
-[Lighthouse]() |
-[JSLint.org]()
+[W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsreninc.github.io%2Ffinancial-freedom%2Fresults.html) |
+[Lighthouse Desktop](assets/readme-images/desktop/results.pdf) |
+[Lighthouse Mobile](assets/readme-images/mobile/results.pdf)
 
 ***
 
 ## Bug Log
 Below is a log of bugs or issues identified during testing as well as details on how they were solved. If a bug / issue was not able to be solved then this is marked with an unchecked box to the left hand side of the item.
 
-- [] Get Advice button allowing you in without filling in both items
+- [x] Get Advice button allowing you in without filling in both items. This was sorted by simply changing the element to a button instead of an anchor
+- [x] Add-item form allowing you to change category type when editing. This was sorted by hiding the category button that wasn't relevant in the modal. This however raised another issue in that the default category options were for Expense, so when income was chosen the user could save with the incorrect category types. I solved this by adding toggleCategory() function to the editItem() function.
+- [x] Advice buttons not all being the same size on various screen sizes. After investigation this was happening because there were 2 card-body class elements in the code for each card. Changing the second element to card-footer class sorted the issue with buttons showing different sizes.
 - [] Large numbers breaking charts
 - [] Negative numbers allowed
 
 ### Known issues
-- The results line chart does not display in an easily readable format on small screens. 
+- The results line chart does not display in an easily readable format on small screens. While I fixed the labels to not overlap and reduce the number of labels that was generated to ameliorate the issue it isn't solved. Ideally a chart conveying the same meaning would be present for mobile devices.
 
 ***
 
@@ -278,14 +276,14 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 1. Code to capitalize first letter of a string: https://flaviocopes.com/how-to-uppercase-first-letter-javascript/
 1. chartjs.org used for all charts and examples taken from their website
 1. chartjs-datalabels used to alter the display of tables 
-1. Bootstrap
-1. Images
+1. Bootstrap 5.0 was used across the site.
 1. My Mentor, Maranatha Ilesanmi,  for continuous helpful feedback and guidance.
-1. Fellow Code Institute students for their feedback and suggestions.
-1. stackoverflow
-1. Feather icons
-1. Unsplash Images
-
+1. Fellow Code Institute students for their much valued feedback and suggestions.
+1. Stackoverflow for their community answering all the random questions that I have. 
+1. W3C for their tools and guides which help endlessly.
+1. Feather icons for the various icons used across the website. 
+1. Kris Kohn's youtube video that is present on the homepage: https://www.youtube.com/channel/UCokIq0eihRhkiqClyV0WCdw
+1. Bootstraps Landkit theme that was used as inspiration for the homepage (and intial code before editing): https://themes.getbootstrap.com/product/landkit/
 1. [Flaticon](www.flaticon.com)
     1. [Homepage > Income](https://www.flaticon.com/free-icon/salary_3135706?term=income&page=1&position=4&page=1&position=4&related_id=3135706&origin=search)
     1. [Homepage > Expenses](https://www.flaticon.com/free-icon/expenses_4093960?term=expense&page=1&position=18&page=1&position=18&related_id=4093960&origin=search)
